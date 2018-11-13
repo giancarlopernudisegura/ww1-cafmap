@@ -6,25 +6,79 @@
   <title>WW1 Death Map</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
-  <script src="map.js" type="text/javascript"></script>
+
 </head>
 
 <body>
   <div class="grid-container">
     <div class="map">
-      <div id="geochart-colors">
+      <!-- <div id="geochart-colors">
+      </div> -->
+      <div id="regions_div">
       </div>
     </div>
     <div class="info">
       <p>to be implemented</p>
     </div>
     <div class="timeline">
-      <input type="range" min="1" max="52" value="10" class="slider" id="time">
+      <input type="range" min="3" max="52" value="30" class="slider" id="time">
       <span id="date">month, year</span>
     </div>
   </div>
   <script src="javascript.js" type="text/javascript">
+  </script>
+  <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+  <!-- <script src="map.js" type="text/javascript"></script> -->
+  <script type="text/javascript">
+    var input = document.getElementById('time');
+    var num = input.value;
+
+    google.charts.load('current', {
+      'packages': ['geochart'],
+      'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+      d3.json("mapdata.json", function(data) {
+        var choice = String(num);
+        var length = data[choice][1].length;
+        var json_data = data[choice][1];
+
+        var map_data = [
+          ['country', 'scalar', 'deaths']
+        ];
+
+        for (var index in [...Array(length).keys()]) {
+          map_data.push([json_data[index]['country'], json_data[index]['scalar'], json_data[index]['death_count']]);
+        }
+
+        var data = google.visualization.arrayToDataTable(map_data);
+
+        var options = {
+          tooltip: {
+            isHtml: true
+          },
+          region: '150', // Europe
+          colorAxis: {
+            colors: ['#f8bbd0', '#ff7a7a', '#e31b23']
+          },
+          backgroundColor: '#202020',
+          datalessRegionColor: '#5b5b5b',
+          defaultColor: '#f5f5f5',
+          legend: 'scalar'
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart.draw(data, options);
+      })
+
+      input.oninput = function() {
+        num = input.value;
+        console.log(num);
+        google.charts.setOnLoadCallback(drawRegionsMap);
+      }
+    }
   </script>
 </body>
 

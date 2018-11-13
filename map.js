@@ -1,46 +1,40 @@
 google.charts.load('current', {
   'packages': ['geochart'],
-  // Note: you will need to get a mapsApiKey for your project.
-  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
   'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
 });
 google.charts.setOnLoadCallback(drawRegionsMap);
 
-function drawRegionsMap(json_data) {
-  console.log('llllllllllllll');
-  console.log(json_data)
-  console.log(json_data[0])
-  var d_array = [
-    ['Country', 'scalar', 'Deaths']
-  ];
-  // var datum;
-  d_array.push([json_data[0]["country"], json_data[0]["scalar"], json_data[0]["death_count"]]);
-  // for (let datum in json_data[0]) {
-  //   // console.log(json_data)
-  //   console.log('hhhhhhhhhhhhhhhhhh');
-  //   console.log(datum)
-  //   // console.log(datum.country);
+function drawRegionsMap(map_data) {
+  d3.json("mapdata.json", function(data) {
+    var choice = "14"
+    var length = data[choice][1].length
+    var json_data = data[choice][1];
 
-  // }
+    var map_data = [
+      ['country', 'scalar', 'deaths']
+    ];
 
-  console.log('xxxxxxxxxxxx');
-  console.log(d_array);
-  var data = google.visualization.arrayToDataTable(d_array);
+    for (var index in [...Array(length).keys()]) {
+      map_data.push([json_data[index]['country'], json_data[index]['scalar'], json_data[index]['death_count']]);
+    }
 
-  var options = {
-    tooltip: {
-      isHtml: true
-    },
-    region: '150', // Africa
-    colorAxis: {
-      colors: ['#f8bbd0', '#ff7a7a', '#e31b23']
-    },
-    backgroundColor: '#81d4fa',
-    datalessRegionColor: 'white',
-    defaultColor: '#f5f5f5',
-    legend: 'scalar'
-  };
+    var data = google.visualization.arrayToDataTable(map_data);
 
-  var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
-  chart.draw(data, options);
-};
+    var options = {
+      tooltip: {
+        isHtml: true
+      },
+      region: '150', // Europe
+      colorAxis: {
+        colors: ['#f8bbd0', '#ff7a7a', '#e31b23']
+      },
+      backgroundColor: '#81d4fa',
+      datalessRegionColor: 'white',
+      defaultColor: '#f5f5f5',
+      legend: 'scalar'
+    };
+
+    var chart = new google.visualization.GeoChart(document.getElementById('geocharts-colors'));
+    chart.draw(data, options);
+  })
+}
