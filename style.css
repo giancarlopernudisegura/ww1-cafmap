@@ -1,0 +1,57 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  background-color: #252525;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'main menu'
+    'footer footer';
+  grid-template-rows: calc(100% - 80px) 80px;
+  grid-template-columns: calc(100% - 200px) 200px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid-container>div {
+  font-size: 30px;
+}
+
+.map {
+  grid-area: 'main';
+  width: 60%;
+}
+
+.geochart-colors {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  grid-area: 'menu';
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+}
+
+.timeline {
+  grid-area: 'footer';
+  width: 100vw;
+  height: 100%;
+  text-align: center;
+}
+
+.slider {
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#date {
+  color: white;
+}
