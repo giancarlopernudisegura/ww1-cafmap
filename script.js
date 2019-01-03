@@ -67,7 +67,7 @@ d3.json('battle_data.json', function(err, data) {
 mapboxgl.accessToken = 'pk.eyJ1IjoicGVybnVkaSIsImEiOiJjam9maDV6bDcwNGJmM3BuMGtzeWV2OGI0In0.tW-oIvuC67hGjxp1WDnY0g';
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/pernudi/cjq0sqh6m3kv02smhwxnjft8q',
+  style: 'mapbox://styles/mapbox/light-v9',
   center: [-20, 50],
   zoom: 2.3,
   minZoom: 2
@@ -160,8 +160,8 @@ map.on('load', function() {
           'interpolate',
           ['linear'],
           ['get', 'death_count'],
-          1, '#f66',
-          500, '#7a1400'
+          1, '#fcc2c2',
+          500, '#b70303'
         ],
         'fill-opacity': 0.8
       }
