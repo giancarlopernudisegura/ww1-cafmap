@@ -82,38 +82,50 @@ var dates = [
   "March 1921", "April 1921", "May 1921", "June 1921", "July 1921", "August 1921"
 ];
 
-var coords = {
-  "Belgium": [4.469936, 50.503887],
-  "Bermuda": [-64.75737, 32.321384],
-  "Canada": [-95.346771, 56.130366],
-  "Cuba": [-77.781167, 21.521757],
-  "Denmark": [9.501785, 56.26392],
-  "Egypt": [30.802498, 26.820553],
-  "France": [2.213749, 46.227638],
-  "Germany": [10.451526, 51.165691],
-  "Greece": [21.824312, 39.074208],
-  "India": [78.96288, 20.593684],
-  "Iraq": [43.679291, 33.223191],
-  "Ireland": [-8.24389, 53.41291],
-  "Isreal and Palestine": [34.851612, 31.046051],
-  "Italy": [12.56738, 41.87194],
-  "Lebanese Republic": [35.862285, 33.854721],
-  "Malta": [14.375416, 35.937496],
-  "Netherlands": [5.291266, 52.132633],
-  "Poland": [19.145136, 51.919438],
-  "Russia": [105.318756, 61.52401],
-  "South Africa": [22.937506, -30.559482],
-  "St. Lucia": [-60.978893, 13.909444],
-  "Switzerland": [8.227512, 46.818188],
-  "Tanzania": [34.888822, -6.369028],
-  "Turkey": [35.243322, 38.963745],
-  "United Kingdom": [-3.435973, 55.378051],
-  "United States of America": [-95.712891, 37.09024]
+var country_dict = {
+  "Belgium": [12],
+  "Bermuda": [21],
+  "Canada": [28],
+  "Cuba": [38],
+  "Denmark": [44],
+  "Egypt": [48],
+  "France": [56],
+  "Germany": [42],
+  "Greece": [65],
+  "India": [75],
+  "Iraq": [78],
+  "Ireland": [76],
+  "Isreal and Palestine": [80],
+  "Italy": [81],
+  "Lebanese Republic": [93],
+  "Malta": [107],
+  "Netherlands": [120],
+  "Poland": [130],
+  "Russia": [137],
+  "South Africa": [177],
+  "St. Lucia": [180],
+  "Switzerland": [29],
+  "Tanzania": [166],
+  "Turkey": [164],
+  "United Kingdom": [58],
+  "United States of America": [170],
 };
+
+var coords = {};
+
+var country_type = {};
+
+d3.json('countries.geojson', function(err, countries) {
+  if (err) throw err;
+  for (country in country_dict) {
+    coords[country] = countries.features[country_dict[country]].geometry.coordinates;
+    country_type[country] = countries.features[country_dict[country]].geometry.type;
+  }
+});
 
 function filterBy(d) {
   var filters = ['==', 'time', d];
-  map.setFilter('casualty-circles', filters);
+  map.setFilter('casualty-fill', filters);
   map.setFilter('casualty-labels', filters);
 
   // Set the label to the month
@@ -128,43 +140,37 @@ map.on('load', function() {
     // Create a month property value based on time
     // used to filter against.
     data.features = data.features.map(function(d) {
+      d.geometry.type = country_type[d.geometry.country];
       d.geometry.coordinates = coords[d.geometry.country];
-      // console.log(d);
+      console.log(d);
       return d;
     });
 
-    map.addSource('casualtys', {
+    map.addSource('casualties', {
       'type': 'geojson',
       data: data
     });
 
     map.addLayer({
-      'id': 'casualty-circles',
-      'type': 'circle',
-      'source': 'casualtys',
+      'id': 'casualty-fill',
+      'type': 'fill',
+      'source': 'casualties',
       'paint': {
-        'circle-color': [ //REMAPING VALUES
+        'fill-color': [ //REMAPING VALUES
           'interpolate',
           ['linear'],
           ['get', 'death_count'],
           1, '#f66',
           500, '#7a1400'
         ],
-        'circle-opacity': 0.8,
-        'circle-radius': [ //REMAPING VALUES
-          'interpolate',
-          ['linear'],
-          ['get', 'death_count'],
-          1, 8,
-          500, 55
-        ]
+        'fill-opacity': 0.8
       }
     });
 
     map.addLayer({
       'id': 'casualty-labels',
       'type': 'symbol',
-      'source': 'casualtys',
+      'source': 'casualties',
       'layout': {
         'text-field': ['to-string', ['get', 'death_count']],
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
