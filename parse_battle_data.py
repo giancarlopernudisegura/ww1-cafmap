@@ -80,11 +80,11 @@ for row in cursor:
 db_connection.close()
 
 # Dump battle data dictionary to json file
-with open("battledata.json", 'w') as outfile:  
+with open("battle_data.json", 'w') as outfile:  
     json.dump(data, outfile)
 
 # # Pretty print json file
-# with open("battledata.json", 'r') as handle:
+# with open("battle_data.json", 'r') as handle:
 #     parsed = json.load(handle)
 #     print(json.dumps(parsed, indent=4, sort_keys=True))
 # handle.close()

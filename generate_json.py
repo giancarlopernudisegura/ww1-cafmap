@@ -46,11 +46,11 @@ for row in cursor:
 db_connection.close()
 
 # Dump data dictionary to json file
-with open("mapdata.json", 'w') as outfile:  
+with open("data.geojson", 'w') as outfile:  
     json.dump(data, outfile)
 
 # # Pretty print json file
-# with open("mapdata.json", 'r') as handle:
+# with open("data.geojson", 'r') as handle:
 #     parsed = json.load(handle)
 #     print(json.dumps(parsed, indent=4, sort_keys=True))
 # handle.close()
