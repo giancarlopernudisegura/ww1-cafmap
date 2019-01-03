@@ -29,18 +29,21 @@
       </div>
     </div>
     <div class="info">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum pulvinar nunc, ut feugiat libero eleifend quis. Maecenas blandit sem eu enim aliquet fringilla. Nam enim quam, consequat tempor nunc quis, pharetra consectetur est.
-        Integer id facilisis nunc. Donec vel finibus diam. Vivamus sit amet leo id sapien aliquet semper. Nulla volutpat sem ut ultrices congue. In laoreet ac sapien in venenatis. Duis ac vulputate eros. Vestibulum cursus, justo condimentum sodales
-        efficitur, augue libero posuere tortor, eu ornare nisl mi sit amet erat.
-
-        Etiam fermentum justo porta est venenatis bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum ullamcorper egestas orci, eget viverra elit elementum id. Proin in massa aliquam, aliquet metus maximus, ornare
-        magna. Morbi enim velit, congue cursus porta vitae, malesuada at purus. In ex nulla, faucibus ac tincidunt sit amet, commodo ut lacus. Morbi quis est at enim ornare laoreet fringilla eu urna. Duis maximus, risus eget suscipit porta, dui
-        ligula imperdiet odio, nec imperdiet velit justo ac turpis. Pellentesque placerat eu est sit amet lacinia. Fusce at egestas dui, euismod eleifend dui. Pellentesque facilisis id diam sed vehicula. Vestibulum porta arcu et erat congue
-        facilisis. Pellentesque in nisi nisl. Duis in maximus magna, id dignissim ex.</p>
+      <h1>Battles</h1>
+      <hr class="title-bar">
+      <ul id="battles">
+      </ul>
     </div>
   </div>
 
   <script>
+    function addListElement(string) {
+      var ul = document.getElementById("battles");
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(string));
+      ul.appendChild(li);
+    }
+
     mapboxgl.accessToken = 'pk.eyJ1IjoicGVybnVkaSIsImEiOiJjam9maDV6bDcwNGJmM3BuMGtzeWV2OGI0In0.tW-oIvuC67hGjxp1WDnY0g';
     var map = new mapboxgl.Map({
       container: 'map',
@@ -161,59 +164,6 @@
         });
       });
     });
-  </script>
-  <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
-  <!-- <script src="map.js" type="text/javascript"></script> -->
-  <script type="text/javascript">
-    var input = document.getElementById('time');
-    var num = input.value;
-
-    google.charts.load('current', {
-      'packages': ['geochart'],
-      'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-    });
-    google.charts.setOnLoadCallback(drawRegionsMap);
-
-    function drawRegionsMap() {
-      d3.json("mapdata.json", function(data) {
-        var choice = String(num);
-        var length = data[choice][1].length;
-        var json_data = data[choice][1];
-
-        var map_data = [
-          ['country', 'scalar', 'deaths']
-        ];
-
-        for (var index in [...Array(length).keys()]) {
-          map_data.push([json_data[index]['country'], json_data[index]['scalar'], json_data[index]['death_count']]);
-        }
-
-        var data = google.visualization.arrayToDataTable(map_data);
-
-        var options = {
-          tooltip: {
-            isHtml: true
-          },
-          region: '150', // Europe
-          colorAxis: {
-            colors: ['#f8bbd0', '#ff7a7a', '#e31b23']
-          },
-          backgroundColor: '#202020',
-          datalessRegionColor: '#5b5b5b',
-          defaultColor: '#f5f5f5',
-          legend: 'scalar'
-        };
-
-        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-        chart.draw(data, options);
-      })
-
-      input.oninput = function() {
-        num = input.value;
-        console.log(num);
-        google.charts.setOnLoadCallback(drawRegionsMap);
-      }
-    }
   </script>
 </body>
 
