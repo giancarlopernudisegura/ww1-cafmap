@@ -44,6 +44,27 @@
       ul.appendChild(li);
     }
 
+    d3.json('battledata.json', function(err, data) {
+      if (err) throw err;
+
+      function getList(num) {
+        return data[String(num)];
+      }
+
+      function addList(array) {
+        document.getElementById("battles").innerHTML = "";
+        for (a in array) {
+          addListElement(array[a]["sidebar_text"]);
+        }
+      }
+
+      var slider = document.getElementById('slider');
+      addList(getList(slider.value));
+      slider.addEventListener('input', function(e) {
+        addList(getList(slider.value));
+      });
+    });
+
     mapboxgl.accessToken = 'pk.eyJ1IjoicGVybnVkaSIsImEiOiJjam9maDV6bDcwNGJmM3BuMGtzeWV2OGI0In0.tW-oIvuC67hGjxp1WDnY0g';
     var map = new mapboxgl.Map({
       container: 'map',
