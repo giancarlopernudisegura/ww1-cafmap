@@ -4,4 +4,6 @@ data from: https://www.cwgc.org/find/find-war-dead/results?war=1%252c2&tab=warde
 
 battle data from: https://en.wikipedia.org/wiki/List_of_Canadian_battles_during_the_First_World_War
 
+country geojson: https://github.com/johan/world.geo.json
+
 in collaboration with: https://github.com/willfenton
