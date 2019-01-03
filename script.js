@@ -19,7 +19,7 @@ function play() {
   if (run) {
     alarm = setInterval(function() {
       runTime();
-    }, 1000);
+    }, 2000);
   } else {
     clearInterval(alarm);
     // console.log("stoped");
