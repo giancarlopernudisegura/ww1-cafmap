@@ -43,6 +43,13 @@ function addListElement(string) {
   ul.appendChild(li);
 }
 
+function addEmpty() {
+  var div = document.getElementById("battle-div");
+  var p = document.createElement("p");
+  p.appendChild(document.createTextNode('No notables battles for this month'));
+  div.appendChild(p);
+}
+
 d3.json('battle_data.json', function(err, data) {
   if (err) throw err;
 
@@ -52,8 +59,12 @@ d3.json('battle_data.json', function(err, data) {
 
   function addList(array) {
     document.getElementById("battles").innerHTML = "";
+    document.getElementById("battle-div").innerHTML = "<h1>Battles</h1><hr class='title-bar'><ul id='battles'></ul>";
     for (a in array) {
       addListElement(array[a]['sidebar_text']);
+    }
+    if (array.length == 0) {
+      addEmpty();
     }
   }
 
