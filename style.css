@@ -15,7 +15,7 @@ a {
 }
 
 a:visited {
-  color: white;
+  color: black;
 }
 
 ::-webkit-scrollbar {
@@ -180,11 +180,12 @@ input[type=range]::-moz-range-thumb:active {
 }
 
 .bottom {
-  bottom: 10px;
+  bottom: 5px;
   width: auto;
 }
 
 .bottom .map-overlay-inner {
   background-color: rgba(255, 255, 255, 0);
+  box-shadow: none;
   padding: 2px;
 }

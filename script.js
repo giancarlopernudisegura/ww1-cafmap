@@ -115,6 +115,49 @@ var coords = {};
 
 var country_type = {};
 
+var c2d = {
+  "Belgium": [4.469936, 50.503887],
+  "Bermuda": [-64.75737, 32.321384],
+  "Canada": [-95.346771, 56.130366],
+  "Cuba": [-77.781167, 21.521757],
+  "Denmark": [9.501785, 56.26392],
+  "Egypt": [30.802498, 26.820553],
+  "France": [2.213749, 46.227638],
+  "Germany": [10.451526, 51.165691],
+  "Greece": [21.824312, 39.074208],
+  "India": [78.96288, 20.593684],
+  "Iraq": [43.679291, 33.223191],
+  "Ireland": [-8.24389, 53.41291],
+  "Isreal and Palestine": [34.851612, 31.046051],
+  "Italy": [12.56738, 41.87194],
+  "Lebanese Republic": [35.862285, 33.854721],
+  "Malta": [14.375416, 35.937496],
+  "Netherlands": [5.291266, 52.132633],
+  "Poland": [19.145136, 51.919438],
+  "Russia": [105.318756, 61.52401],
+  "South Africa": [22.937506, -30.559482],
+  "St. Lucia": [-60.978893, 13.909444],
+  "Switzerland": [8.227512, 46.818188],
+  "Tanzania": [34.888822, -6.369028],
+  "Turkey": [35.243322, 38.963745],
+  "United Kingdom": [-3.435973, 55.378051],
+  "United States of America": [-95.712891, 37.09024]
+};
+
+var centoids = {};
+d3.json('data.geojson', function(err, data) {
+  if (err) throw err;
+
+  data.features = data.features.map(function(d) {
+    d.geometry.coordinates = c2d[d.geometry.country];
+    // console.log(d);
+    return d;
+  });
+
+  centoids = data;
+});
+
+
 d3.json('countries.geojson', function(err, countries) {
   if (err) throw err;
   for (country in country_dict) {
@@ -142,13 +185,18 @@ map.on('load', function() {
     data.features = data.features.map(function(d) {
       d.geometry.type = country_type[d.geometry.country];
       d.geometry.coordinates = coords[d.geometry.country];
-      console.log(d);
+      // console.log(d);
       return d;
     });
 
     map.addSource('casualties', {
       'type': 'geojson',
       data: data
+    });
+
+    map.addSource('centoid', {
+      'type': 'geojson',
+      data: centoids
     });
 
     map.addLayer({
@@ -161,7 +209,7 @@ map.on('load', function() {
           ['linear'],
           ['get', 'death_count'],
           1, '#fcc2c2',
-          500, '#b70303'
+          1500, '#b70303'
         ],
         'fill-opacity': 0.8
       }
@@ -170,14 +218,14 @@ map.on('load', function() {
     map.addLayer({
       'id': 'casualty-labels',
       'type': 'symbol',
-      'source': 'casualties',
+      'source': 'centoid',
       'layout': {
         'text-field': ['to-string', ['get', 'death_count']],
         'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
         'text-size': 14
       },
       'paint': {
-        'text-color': 'rgba(0,0,0,0.5)'
+        'text-color': 'rgba(0,0,0,0.8)'
       }
     });
 
