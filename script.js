@@ -1,3 +1,41 @@
+window.run = false;
+window.alarm;
+window.event = new Event('input', {
+  'bubbles': true,
+  'cancelable': true
+});
+window.element = document.getElementById('slider');
+
+function play() {
+  if (run) {
+    run = false;
+    document.getElementById('play').innerHTML = 'Play &#9658;';
+  } else {
+    run = true;
+    document.getElementById('play').innerHTML = 'Pause &#10074;&#10074;';
+  }
+
+  // console.log(run);
+  if (run) {
+    alarm = setInterval(function() {
+      runTime();
+    }, 1000);
+  } else {
+    clearInterval(alarm);
+    // console.log("stoped");
+  }
+}
+
+function runTime() {
+  var timer = document.getElementById('slider').value;
+  timer++;
+  if (timer >= 85) {
+    timer = 0;
+  }
+  document.getElementById('slider').value = timer;
+  element.dispatchEvent(event);
+}
+
 function addListElement(string) {
   var ul = document.getElementById("battles");
   var li = document.createElement("li");
@@ -15,7 +53,7 @@ d3.json('battle_data.json', function(err, data) {
   function addList(array) {
     document.getElementById("battles").innerHTML = "";
     for (a in array) {
-      addListElement(array[a]["sidebar_text"]);
+      addListElement(array[a]['sidebar_text']);
     }
   }
 
@@ -36,7 +74,7 @@ var map = new mapboxgl.Map({
 });
 
 var dates = [
-  "October 1914", "November 1914", "December 1914", "January 1915", "February 1915", "March 1915", "April 1915", "May 1915", "June 1915", "July 1915", "August 1915", "September 1915", "October 1915", "November 1915", "December 1915",
+  "August 1914", "September 1914", "October 1914", "November 1914", "December 1914", "January 1915", "February 1915", "March 1915", "April 1915", "May 1915", "June 1915", "July 1915", "August 1915", "September 1915", "October 1915", "November 1915", "December 1915",
   "January 1916", "February 1916", "March 1916", "April 1916", "May 1916", "June 1916", "July 1916", "August 1916", "September 1916", "October 1916", "November 1916", "December 1916", "January 1917", "February 1917", "March 1917", "April 1917",
   "May 1917", "June 1917", "July 1917", "August 1917", "September 1917", "October 1917", "November 1917", "December 1917", "January 1918", "February 1918", "March 1918", "April 1918", "May 1918", "June 1918", "July 1918", "August 1918",
   "September 1918", "October 1918", "November 1918", "December 1918", "January 1919", "February 1919", "March 1919", "April 1919", "May 1919", "June 1919", "July 1919", "August 1919", "September 1919", "October 1919", "November 1919",

@@ -95,13 +95,42 @@ input[type=range]::-webkit-slider-thumb {
   appearance: none;
   width: 10%;
   height: 20px;
-  background: #444444;
+  background: #444;
 }
 
 input[type=range]::-moz-range-thumb {
-  width: 30%;
+  width: 10%;
   height: 20px;
-  background: #444444;
+  background: #444;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  background-color: #333;
+}
+
+input[type=range]::-moz-range-thumb:active {
+  background-color: #333;
+}
+
+.button {
+  background-color: #444;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 1;
+}
+
+.button:active {
+  background-color: #333;
 }
 
 #date {
