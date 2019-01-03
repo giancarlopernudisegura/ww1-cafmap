@@ -1,8 +1,12 @@
+Battle of Neuve Chapelle
+10 March 1915
+10 March 1915
+France
 Battle of Gravenstafel
 22 April 1915
 23 April 1915
 Belgium
-Battle of St Julien
+Battle of St. Julien
 24 April 1915
 4 May 1915
 Belgium
@@ -14,27 +18,67 @@ Battle of Bellewaerde Ridge
 24 May 1915
 25 May 1915
 Belgium
+Battle of Aubers Ridge
+9 May 1915
+9 May 1915
+France
 Battle of Festubert
 15 May 1915
 27 May 1915
 France
 Second Action at Givenchy
-15 June 1915
-16 June 1915
+15 May 1915
+16 May 1915
 France
 Battle of Loos
 25 September 1915
 8 October 1915
 France
-Action of St Eloi Craters
+Action of Bois Grenier
+25 September 1915
+25 September 1915
+France
+Battle of the Hohenzollern Redoubt
+13 October 1915
+19 October 1915
+France
+St. Eloi Craters
 27 March 1916
 16 April 1916
 Belgium
-Battle of Mount Sorrel
+Battle of Mont Sorrel
 2 June 1916
 13 June 1916
 Belgium
-Battle of Flers-Courcelette
+Battle of Albert (1916)
+1 July 1916
+13 July 1916
+France
+Battle of Bazentin Ridge
+14 July 1916
+17 July 1916
+France
+Battle of Fromelles
+19 July 1916
+19 July 1916
+France
+Attacks on High Wood
+20 July 1916
+25 July 1916
+France
+Battle of Pozières
+1 September 1916
+3 September 1916
+France
+Battle of Guillemont
+3 September 1916
+6 September 1916
+France
+Battle of Ginchy
+9 September 1916
+9 September 1916
+France
+Battle of Flers–Courcelette
 15 September 1916
 22 September 1916
 France
@@ -46,51 +90,159 @@ Battle of Le Transloy
 1 October 1916
 18 October 1916
 France
-Battle of the Ancre Heights
+Battle of the Ancre Heights (Capture of Regina Trench)
 1 October 1916
 11 November 1916
 France
+The Ancre, 1916 (Capture of Beaumont Hamel)
+13 November 1916
+18 November 1916
+France
 Battle of Vimy Ridge
 9 April 1917
+12 April 1917
+France
+First Scarpe, 1917
+9 April 1917
 14 April 1917
+France
+Second Scarpe, 1917
+23 April 1917
+24 April 1917
+France
+Attack on La Coulotte
+23 April 1917
+23 April 1917
 France
 Battle of Arleux
 28 April 1917
 29 April 1917
 France
+Third Scarpe, 1917 (Capture of Fresnoy)
+3 May 1917
+4 May 1917
+France
+Affairs South of the Souchez River
+3 June 1917
+25 June 1917
+France
+Capture of Avion
+26 June 1917
+29 June 1917
+France
 Battle of Hill 70
 15 August 1917
 25 August 1917
 France
+Battle of Messines
+7 June 1917
+14 June 1917
+Belgium
+Battle of Pilckem Ridge
+31 July 1917
+3 August 1917
+Belgium
+Battle of Langemarck
+16 August 1917
+18 August 1917
+Belgium
+Battle of the Menin Road Ridge
+20 September 1917
+25 September 1917
+Belgium
+Battle of Polygon Wood
+26 September 1917
+3 October 1917
+Belgium
+Battle of Broodseinde
+4 October 1917
+4 October 1917
+Belgium
+Battle of Poelcappelle
+9 October 1917
+9 October 1917
+Belgium
+First Battle of Passchendaele
+12 October 1917
+12 October 1917
+Belgium
 Second Battle of Passchendaele
 26 October 1917
 10 November 1917
 Belgium
+Battle of Cambrai
+20 November 1917
+8 December 1917
+Belgium
+Actions at the Somme Crossings
+24 March 1918
+25 March 1918
+France
+Capture of Hamel
+4 July 1918
+4 July 1918
+France
+First Defence of Givenchy
+9 April 1918
+11 April 1918
+France
+Messines (Loss of Hill 63)
+13 April 1918
+15 April 1918
+Belgium
+Action of La Becque
+28 June 1918
+28 June 1918
+France
 Battle of Amiens
 8 August 1918
 11 August 1918
+France
+Actions Around Damery
+15 August 1918
+17 August 1918
 France
 Battle of the Scarpe
 26 August 1918
 30 August 1918
 France
-Battle of Drocourt-Queant Canal
-2 September 1918
-3 September 1918
+Capture of Monchy-le-Preux
+26 August 1918
+30 August 1918
 France
-Battle of the Canal du Nord
+Capture of Bourlon Wood
 27 September 1918
 1 October 1918
 France
-Battle of Cambrai
+Capture of Cambrai
 8 October 1918
 9 October 1918
 France
-Battle of Valenciennes
+Battle of Ypres
+28 September 1918
+2 October 1918
+Belgium
+Pursuit to the Selle
+9 October 1918
+12 October 1918
+France
+Battle of Courtrai
+14 October 1918
+19 October 1918
+Belgium
+Battle of the Selle
+17 October 1918
+25 October 1918
+France
+Battle of Valenciennes (Capture of Moot Houy)
 1 November 1918
 2 November 1918
 France
+Battle of the Sambre
+4 November 1918
+4 November 1918
+France
 Capture of Mons
-9 November 1918
+11 November 1918
 11 November 1918
 Belgium
