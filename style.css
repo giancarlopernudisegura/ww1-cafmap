@@ -28,22 +28,9 @@ body {
   background-color: #444444;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'main menu';
-  grid-template-columns: calc(100% - 500px) 500px;
-  width: 100%;
-  height: 100vh;
-}
-
-.grid-container>div {
-  font-size: 30px;
-}
-
 .map {
-  grid-area: 'main';
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 #map {
@@ -64,13 +51,19 @@ body {
   overflow: auto;
 }
 
-ul {
+#battles {
   list-style-type: circle;
   padding-left: 40px;
 }
 
+#battles li {
+  font-size: 28px;
+}
+
 .title-bar {
   width: 60%;
+  border-color: black;
+  background-color: black;
 }
 
 input[type=range] {
@@ -107,7 +100,7 @@ input[type=range]::-moz-range-thumb {
 
 /* <~~MAP OVERLAY~~> */
 .map-overlay {
-  font: 12px/20px Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font: 18px Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   position: absolute;
   width: 30%;
   top: 0;
