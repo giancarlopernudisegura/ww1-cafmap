@@ -70,6 +70,11 @@ a:visited {
   font-size: 22px;
 }
 
+#battle-div p {
+  font-size: 22px;
+  font-style: italic;
+}
+
 .title-bar {
   width: 60%;
   border-color: black;
