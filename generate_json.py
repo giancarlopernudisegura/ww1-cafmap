@@ -11,6 +11,8 @@ import json
 db_connection = sqlite3.connect("ww1.db")
 cursor = db_connection.cursor()
 
+#------ Mapbox Json ------#
+
 # Setup data for mapbox
 data = {
     "type"     : "FeatureCollection",
@@ -42,15 +44,27 @@ for row in cursor:
     # Add to data dictionary
     data["features"].append(datapoint)
 
-# Close connection
-db_connection.close()
 
 # Dump data dictionary to json file
 with open("data.geojson", 'w') as outfile:  
     json.dump(data, outfile)
+outfile.close()
 
-# # Pretty print json file
-# with open("data.geojson", 'r') as handle:
-#     parsed = json.load(handle)
-#     print(json.dumps(parsed, indent=4, sort_keys=True))
-# handle.close()
+#------ Deaths Json ------#
+
+# Get deaths per month from database
+cursor.execute("SELECT month_int, SUM(deaths) FROM CountryMonth GROUP BY month_int;")
+
+data = {}
+
+# Enter data into dictionary
+for row in cursor:
+    data[row[0]] = row[1]
+
+# Dump data dictionary to json file
+with open("deaths.json", 'w') as outfile:  
+    json.dump(data, outfile)
+outfile.close()
+
+# Close connection
+db_connection.close()
