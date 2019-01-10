@@ -29,9 +29,8 @@ function play() {
 function runTime() {
   var timer = document.getElementById('slider').value;
   timer++;
-  if (timer >= 85) {
-    timer = 0;
-  }
+  timer %= 85
+  
   document.getElementById('slider').value = timer;
   element.dispatchEvent(event);
 }

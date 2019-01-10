@@ -175,7 +175,7 @@ input[type=range]::-moz-range-track {
 .map-overlay .legend .bar {
   height: 10px;
   width: 100%;
-  background: linear-gradient(to right, #f66, #7a1400);
+  background: linear-gradient(to right, #fcc2c2, #b70303);
 }
 
 .map-overlay input {
