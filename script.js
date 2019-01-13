@@ -6,6 +6,23 @@ window.event = new Event('input', {
 });
 window.element = document.getElementById('slider');
 
+window.speed = 1000;
+
+document.getElementsByClassName('dropdown')[0].addEventListener('input', function(e) {
+  speed = changeSpeed();
+  console.log(speed);
+  //resets the alarm so speed change takes effect immediatly
+  clearInterval(alarm);
+  alarm = setInterval(function() {
+    runTime();
+  }, speed);
+});
+
+function changeSpeed() {
+  // gets the value from the dropdown speed selected and converts it to an integer
+  return parseInt(document.getElementsByClassName('dropdown')[0].value);
+}
+
 function play() {
   if (run) {
     run = false;
@@ -19,7 +36,7 @@ function play() {
   if (run) {
     alarm = setInterval(function() {
       runTime();
-    }, 2000);
+    }, speed);
   } else {
     clearInterval(alarm);
     // console.log("stoped");
@@ -29,8 +46,7 @@ function play() {
 function runTime() {
   var timer = document.getElementById('slider').value;
   timer++;
-  timer %= 85
-  
+  timer %= 85;
   document.getElementById('slider').value = timer;
   element.dispatchEvent(event);
 }
@@ -80,7 +96,12 @@ var map = new mapboxgl.Map({
   style: 'mapbox://styles/mapbox/light-v9',
   center: [-20, 50],
   zoom: 2.3,
-  minZoom: 2
+  "name": "Mapbox Streets",
+  minZoom: 2,
+  "transition": {
+    "duration": 150,
+    "delay": 0
+  }
 });
 
 var dates = [
@@ -231,11 +252,15 @@ map.on('load', function() {
       'source': 'centoid',
       'layout': {
         'text-field': ['to-string', ['get', 'death_count']],
-        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-font': ['Arial Unicode MS Bold', 'Open Sans Bold'],
         'text-size': 14
       },
       'paint': {
-        'text-color': 'rgba(0,0,0,0.8)'
+        'text-color': 'rgba(0,0,0,0.9)',
+        "icon-opacity": 1,
+        "icon-opacity-transition": {
+          "duration": 0
+        }
       }
     });
 
