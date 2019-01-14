@@ -1,6 +1,5 @@
 element {
   --main-input-color: #666;
-  --slider-color: #333;
   --secondary-input-color: #444;
 }
 
@@ -79,6 +78,18 @@ a:visited {
   overflow: auto;
 }
 
+@media only screen and (orientation: landscape) {
+  #battles {
+    max-height: 150px;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  #battles {
+    max-height: 300px;
+  }
+}
+
 #battles li {
   font-size: 22px;
 }
@@ -132,11 +143,11 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]::-webkit-slider-thumb:active {
-  background-color: var(--slider-color);
+  background-color: #222;
 }
 
 input[type=range]::-moz-range-thumb:active {
-  background-color: var(--slider-color);
+  background-color: #222;
 }
 
 input[type=range]::-moz-range-track {
