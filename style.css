@@ -1,3 +1,9 @@
+element {
+  --main-input-color: #666;
+  --slider-color: #333;
+  --secondary-input-color: #444;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +42,7 @@ a:visited {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #444444;
+  background-color: #444;
 }
 
 .map {
@@ -126,11 +132,11 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]::-webkit-slider-thumb:active {
-  background-color: #333;
+  background-color: var(--slider-color);
 }
 
 input[type=range]::-moz-range-thumb:active {
-  background-color: #333;
+  background-color: var(--slider-color);
 }
 
 input[type=range]::-moz-range-track {
@@ -155,7 +161,7 @@ input[type=range]::-moz-range-track {
 }
 
 .button:active {
-  background-color: #333;
+  background-color: black;
 }
 
 #date {
@@ -224,4 +230,11 @@ input[type=range]::-moz-range-track {
   box-shadow: none;
   padding: 2px;
   /* margin-bottom: 0; */
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+  opacity: 1;
+  height: 34px;
 }
